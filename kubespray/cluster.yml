@@ -1,0 +1,28 @@
+---
+# - name: Wait for SSH up on all hosts before Install Kubernates
+#   hosts: all
+#   gather_facts: no
+#   tasks:
+#     - name: Wait for SSH on control
+#       wait_for:
+#         host: "{{ hostvars['control']['ansible_host'] }}"
+#         port:  22
+#         delay:  5
+#         timeout:  300
+
+#     - name: Wait for SSH on node1
+#       wait_for:
+#         host: "{{ hostvars['node1']['ansible_host'] }}"
+#         port:  22
+#         delay:  5
+#         timeout:  300
+
+#     - name: Wait for SSH on node2
+#       wait_for:
+#         host: "{{ hostvars['node2']['ansible_host'] }}"
+#         port:  22
+#         delay:  5
+#         timeout:  300
+
+- name: Install Kubernetes
+  ansible.builtin.import_playbook: playbooks/cluster.yml
